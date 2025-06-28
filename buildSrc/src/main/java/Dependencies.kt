@@ -17,7 +17,6 @@ object Dependencies {
     }
 
     object GoogleAd {
-        const val mobileAd = "com.google.android.gms:play-services-ads:21.0.0"
         const val billing = "com.android.billingclient:billing-ktx:7.1.1"
     }
 
@@ -27,7 +26,6 @@ object Dependencies {
         const val ui = "androidx.navigation:navigation-ui:$navVersion"
         const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$navVersion"
         const val uiKtx = "androidx.navigation:navigation-ui-ktx:$navVersion"
-        const val navigationDynamicFeatures = "androidx.navigation:navigation-dynamic-features-fragment:$navVersion"
     }
 
     object Compose {

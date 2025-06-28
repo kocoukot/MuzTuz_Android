@@ -19,3 +19,18 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# -- Compose UI/Theme/Extensions --
+-keep class com.muztus.core.** { *; }
+
+# -- MVI/Core Logic --
+-keep class com.muztus.core_mvi.** { *; }
+
+# -- Feature ViewModels --
+-keep class com.muztus.level_select_feature.LevelSelectViewModel { *; }
+-keep class com.muztus.premium_select_feature.PremiaSelectViewModel { *; }
+-keep class com.muztus.statistic.StatisticViewModel { *; }
+
+# -- Koin DI (на всякий случай) --
+-keep class org.koin.** { *; }
+-keep class * extends org.koin.core.module.Module

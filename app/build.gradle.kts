@@ -38,7 +38,7 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.findByName("release")
         }
@@ -78,7 +78,7 @@ dependencies {
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragmentKtx)
     implementation(Dependencies.Navigation.uiKtx)
-    implementation(Dependencies.Navigation.navigationDynamicFeatures)
+//    implementation(Dependencies.Navigation.navigationDynamicFeatures)
 
     val composeBom = platform("androidx.compose:compose-bom:2022.10.00")
     implementation(composeBom)
@@ -91,8 +91,6 @@ dependencies {
     implementation(Dependencies.Compose.livedata)
     implementation(Dependencies.Compose.animation)
     implementation(Dependencies.Compose.activity)
-
-    implementation(Dependencies.GoogleAd.mobileAd)
 
     implementation(Dependencies.Koin.core)
     implementation(Dependencies.Koin.android)
