@@ -38,7 +38,6 @@ class BillingClientService(
                     ?.let {
                         onProductSuccess.invoke(it.description.toInt())
                     }
-            } else {
             }
         }
 

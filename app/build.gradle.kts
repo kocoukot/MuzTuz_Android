@@ -26,11 +26,11 @@ android {
             keyPassword = ("geNii309")
         }
     }
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "com.artline.muztus"
         minSdk = 27
-        targetSdk = 33
+        targetSdk = 35
         versionCode = 6
         versionName = "2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -50,7 +50,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Compose.kotlinCompilerExtensionVersion
     }
-
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
@@ -96,9 +102,7 @@ dependencies {
     kapt(Dependencies.Room.compiler)
     implementation(Dependencies.Room.roomKtx)
 
-
-
-
+    implementation("com.yandex.android:mobileads:7.14.1")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.9.1")
 

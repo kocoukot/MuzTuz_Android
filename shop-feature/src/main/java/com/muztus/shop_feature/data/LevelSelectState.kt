@@ -4,6 +4,7 @@ import com.artline.muztus.billing_feature.ShopItem
 
 data class ShopState(
     val error: String = "",
-    val isLoading: Boolean = false,
-    val productList: List<ShopItem> = emptyList()
+    val isLoading: Boolean = true,
+    val productList: List<ShopItem> = emptyList(),
+    val isAdReady: Boolean = false
 )

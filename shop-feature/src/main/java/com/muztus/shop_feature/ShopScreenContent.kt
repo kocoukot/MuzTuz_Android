@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -89,6 +90,11 @@ fun ShopScreenContent(viewModel: ShopViewModel) {
                 fontSize = 24.sp,
                 color = MTTheme.colors.buttonPressed
             )
+            if (state.isLoading) {
+                CircularProgressIndicator(
+                    color = MTTheme.colors.mainDarkBrown
+                )
+            }
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
@@ -103,34 +109,36 @@ fun ShopScreenContent(viewModel: ShopViewModel) {
                     }
                 }
 
-                item {
-                    Box(
-                        modifier = Modifier.padding(top = 24.dp),
-                        contentAlignment = Alignment.TopCenter
-                    ) {
-                        GameMainButton(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(60.dp),
-                            buttonText = stringResource(id = R.string.free_coins_btn_name),
-                            onButtonClicked = {
-                                viewModel.setInputActions(ShopActions.Base.OnFreeCoinsSelect)
-                            }
-                        )
+                if (state.isAdReady) {
+                    item {
+                        Box(
+                            modifier = Modifier.padding(top = 24.dp),
+                            contentAlignment = Alignment.TopCenter
+                        ) {
+                            GameMainButton(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(60.dp),
+                                buttonText = stringResource(id = R.string.free_coins_btn_name),
+                                onButtonClicked = {
+                                    viewModel.setInputActions(ShopActions.Base.OnFreeCoinsSelect)
+                                }
+                            )
 
-                        Image(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.BottomCenter)
-                                .offset(y = 30.dp),
-                            painter = painterResource(id = R.drawable.bm_animaciya),
-                            contentDescription = null
-                        )
-                        Image(
-                            modifier = Modifier.offset(x = -2.dp, y = -2.dp),
-                            painter = painterResource(imgsList[index.value]),
-                            contentDescription = null
-                        )
+                            Image(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .align(Alignment.BottomCenter)
+                                    .offset(y = 30.dp),
+                                painter = painterResource(id = R.drawable.bm_animaciya),
+                                contentDescription = null
+                            )
+                            Image(
+                                modifier = Modifier.offset(x = -2.dp, y = -2.dp),
+                                painter = painterResource(imgsList[index.value]),
+                                contentDescription = null
+                            )
+                        }
                     }
                 }
             }

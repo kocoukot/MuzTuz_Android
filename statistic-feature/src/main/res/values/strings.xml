@@ -7,7 +7,7 @@
     <string name="statistic_longest_level_text">Самый долгий ответ: %s</string>
     <string name="statistic_hints_used">Использованно подсказок: %d</string>
 
-    <string name="statistic_empty_stata">К сожалению для формирвоания статистики мало данных.</string>
+    <string name="statistic_empty_stata">К сожалению для формирования статистики мало данных.</string>
     <string name="statistic_statistic_title">СТАТИСТИКА</string>
 
 

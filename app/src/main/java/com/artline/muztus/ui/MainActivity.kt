@@ -21,12 +21,14 @@ import com.muztus.core_mvi.AdsActivity
 import com.muztus.core_mvi.UpdateCoins
 import com.muztus.domain_layer.model.IGameSound
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), UpdateCoins, GameSoundPlay, AdsActivity {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()
+    override val _adState: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     private val soundsPlayerService = SoundsPlayerService()
     private val musicPlayerService: MusicPlayerService = MusicPlayerService(this)
@@ -83,7 +85,11 @@ class MainActivity : AppCompatActivity(), UpdateCoins, GameSoundPlay, AdsActivit
             }
         }
 
-        adsClient = AdsService(this, this::onCoinsGot)
+        adsClient = AdsService(this, {
+            lifecycleScope.launch {
+                _adState.value = it
+            }
+        }, this::onCoinsGot)
 
         observeLiveData()
     }
@@ -94,6 +100,10 @@ class MainActivity : AppCompatActivity(), UpdateCoins, GameSoundPlay, AdsActivit
             delay(500)
             playGameSound(GameSound.SoundGotCoins)
         }
+    }
+
+    override fun addLoaded(isLoaded: Boolean) {
+
     }
 
 
@@ -154,7 +164,6 @@ class MainActivity : AppCompatActivity(), UpdateCoins, GameSoundPlay, AdsActivit
         soundsPlayerService.start(this@MainActivity, soundType)
     }
 
-
     override fun showAd() {
         adsClient.showAd(this)
     }
@@ -162,6 +171,11 @@ class MainActivity : AppCompatActivity(), UpdateCoins, GameSoundPlay, AdsActivit
     override fun onPause() {
         super.onPause()
         musicPlayerService.pause()
+    }
+
+    override fun onDestroy() {
+        adsClient.recycleAll()
+        super.onDestroy()
     }
 
 }

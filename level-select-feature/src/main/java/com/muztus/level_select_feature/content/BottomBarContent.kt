@@ -37,6 +37,7 @@ import com.muztus.core.theme.MTTheme
 import com.muztus.domain_layer.model.GameLevelModel
 import com.muztus.level_select_feature.R
 import com.muztus.level_select_feature.model.LevelSelectActions
+import com.muztus.core.R as RCore
 
 @Composable
 fun BottomBarContent(
@@ -92,7 +93,7 @@ fun LevelInput(
         TextField(
             textStyle = TextStyle.Default.copy(
                 fontSize = 24.sp,
-                fontFamily = FontFamily(Font(R.font.optima_bold))
+                fontFamily = FontFamily(Font(RCore.font.optima_bold))
             ),
             modifier = Modifier
                 .weight(1f)
@@ -119,7 +120,7 @@ fun LevelInput(
                         stringResource(id = R.string.input_hint),
                         modifier = Modifier,
                         fontSize = 24.sp,
-                        fontFamily = FontFamily(Font(R.font.optima_bold))
+                        fontFamily = FontFamily(Font(RCore.font.optima_bold))
                     )
 
             })

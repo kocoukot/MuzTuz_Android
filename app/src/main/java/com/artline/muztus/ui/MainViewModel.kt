@@ -36,9 +36,7 @@ class MainViewModel(
 
     fun soundChange(soundType: IGameSound) {
         mSounds.value?.let {
-            println("sound VM ${it.soundState.soundState()}")
             it.changeSound(soundType)
-            println("sound VM ${it.soundState.soundState()}")
             setSoundsStateUseCase.invoke(it)
             mSounds.value = it
         }

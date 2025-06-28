@@ -14,6 +14,8 @@ import com.muztus.core_mvi.ComposeFragmentRoute
 import com.muztus.core_mvi.UpdateCoins
 import com.muztus.shop_feature.data.ShopRoute
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -52,6 +54,10 @@ class ShopFragment : BaseFragment.BaseF<ShopViewModel>(), SupportInfoBar {
                 ShopRoute.ShowAd -> (requireActivity() as AdsActivity).showAd()
             }
         }
+
+        (requireActivity() as AdsActivity)._adState.onEach {
+            viewModel.onAdReady(it)
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun onCoinsGot(amount: Int) {

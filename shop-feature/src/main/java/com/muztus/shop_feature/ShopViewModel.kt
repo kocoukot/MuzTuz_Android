@@ -28,11 +28,18 @@ class ShopViewModel(
 
     fun onProductListGot(list: List<ShopItem>) {
         updateInfo {
-            copy(productList = list)
+            copy(
+                productList = list,
+                isLoading = false
+            )
         }
     }
 
     fun onCoinsBought(bought: Int) {
         setCoinsAmountUseCase.invoke(bought)
+    }
+
+    fun onAdReady(isReady: Boolean) {
+        updateInfo { copy(isAdReady = isReady) }
     }
 }

@@ -5,20 +5,14 @@ plugins {
 
 android {
     namespace = "com.artline.muztus.billing_feature"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 27
-        targetSdk = 33
+        targetSdk = 35
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        val key: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
-            rootDir
-        ).getProperty("GOOGLE_WATCH_KEY")
-
-        buildConfigField("String", "GOOGLE_WATCH_KEY", key)
     }
 
     buildTypes {
@@ -31,21 +25,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
-
+    implementation("com.yandex.android:mobileads:7.14.1")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     implementation(Dependencies.GoogleAd.billing)
-    implementation(Dependencies.GoogleAd.mobileAd)
+//    implementation(Dependencies.GoogleAd.mobileAd)
 
 }
