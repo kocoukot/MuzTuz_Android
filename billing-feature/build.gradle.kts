@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.artline.muztus.billing_feature"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 27

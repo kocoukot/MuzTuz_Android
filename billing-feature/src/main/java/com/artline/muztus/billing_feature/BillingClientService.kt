@@ -34,7 +34,6 @@ class BillingClientService(
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
                 getProductsList()
                 handlePurchase(purchases.first())
-                println("purchases ${purchases.first()}")
                 prodList.find { it.productId.equals(purchases.first().products.first(), true) }
                     ?.let {
                         onProductSuccess.invoke(it.description.toInt())
@@ -102,10 +101,7 @@ class BillingClientService(
 
                         )
                 }.sortedBy { it.formattedPrice }
-//                println("productDetailsList $productDetailsList")
                 onProductsReceived.invoke(prodList)
-            } else {
-                println("billling msg ${billingResult.debugMessage} ")
             }
         }
     }

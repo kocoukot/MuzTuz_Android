@@ -1,7 +1,7 @@
 object Dependencies {
     object Kotlin {
         const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2"
-        const val kotlinCore = "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
+        const val kotlinCore = "org.jetbrains.kotlin:kotlin-stdlib:1.9.20"
     }
 
     object AndroidX {
@@ -18,7 +18,7 @@ object Dependencies {
 
     object GoogleAd {
         const val mobileAd = "com.google.android.gms:play-services-ads:21.0.0"
-        const val billing = "com.android.billingclient:billing-ktx:5.0.0"
+        const val billing = "com.android.billingclient:billing-ktx:7.1.1"
     }
 
     object Navigation {
@@ -32,7 +32,7 @@ object Dependencies {
 
     object Compose {
         private const val composeVersion = "1.1.1"
-        const val kotlinCompilerExtensionVersion = "1.3.2"
+        const val kotlinCompilerExtensionVersion = "1.5.5"
 
         const val material = "androidx.compose.material:material"
         const val ui = "androidx.compose.ui:ui"
@@ -56,7 +56,7 @@ object Dependencies {
     }
 
     object Room {
-        private const val roomVersion = "2.5.1"
+        private const val roomVersion = "2.6.1"
 
         const val runTime = "androidx.room:room-runtime:$roomVersion"
         const val compiler = "androidx.room:room-compiler:$roomVersion"
